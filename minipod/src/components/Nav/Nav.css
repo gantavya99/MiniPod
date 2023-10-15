@@ -1,0 +1,84 @@
+/* Reset default styles for all elements */
+* {
+  padding: 0;
+  margin: 0;
+  font-family: monospace;
+  box-sizing: border-box;
+}
+body{
+  min-width: 300px !important;
+}
+/* Style the navbar container */
+.navbar {
+  background: #2f302c;
+  padding: 10px 0;
+  
+}
+
+/* Style the logo image */
+.img-nav {
+  max-width: 100px;
+  height: auto;
+  margin-right: 20px;
+}
+
+/* Style the ul element */
+ul {
+  list-style: none;
+  background: #2f302c;
+  padding: 0;
+  text-align: center;
+  align-items: center; /* Center the list items */
+}
+
+
+/* Style the list items as inline-block */
+ul li {
+  cursor: pointer;
+  display: inline-block; 
+  /* Use inline-block */
+  
+  margin-right: 10px; /* Add spacing between items */
+}
+ul li:hover{
+  background-color: #484944;
+}
+
+ul li:last-child {
+  margin-right: 0; /* Remove margin for the last item */
+}
+
+ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 10px 20px; /* Add padding to the links */
+  display: block;
+}
+
+/* Style the dropdown menu */
+ul li ul.dropdown {
+  background: #2f302c;
+  z-index: 9999;
+  display: none;
+  position: absolute;
+}
+
+ul li:hover ul.dropdown {
+  display: flex;
+  flex-direction: column;
+}
+.img-nav{
+  float: left;
+  padding-top: 10px;
+  margin-left: 30px !important;
+  margin-right: 0px;
+}
+.login{
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 10px 20px;
+  float: right;
+  margin-right: 40px !important;
+}
