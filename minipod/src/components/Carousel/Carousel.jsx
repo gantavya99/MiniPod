@@ -9,14 +9,21 @@ import img5 from "../../assets/Car5.jpg";
 export const Carousel = () => {
   const slides = [img1, img2, img3, img4, img5];
   const [currIndex, setCurrIndex] = useState(0);
+  const [leftImgIndex, setLeftImgIndex] = useState(4); // Initialize with the last image
+  const [rightImgIndex, setRightImgIndex] = useState(1); // Initialize with the second image
 
   const nextSlide = () => {
-    const nextSlide = currIndex === slides.length - 1 ? 0 : currIndex + 1;
-    setCurrIndex(nextSlide);
+    const nextIndex = currIndex === slides.length - 1 ? 0 : currIndex + 1;
+    setLeftImgIndex(currIndex);
+    setCurrIndex(nextIndex);
+    setRightImgIndex(nextIndex === slides.length - 1 ? 0 : nextIndex + 1);
   };
+
   const prevSlide = () => {
-    const nextSlide = currIndex === 0 ? slides.length - 1 : currIndex - 1;
-    setCurrIndex(nextSlide);
+    const prevIndex = currIndex === 0 ? slides.length - 1 : currIndex - 1;
+    setLeftImgIndex(prevIndex === 0 ? slides.length - 1 : prevIndex - 1);
+    setCurrIndex(prevIndex);
+    setRightImgIndex(currIndex);
   };
   const goToSlide = (slideIndex) => {
     setCurrIndex(slideIndex);
@@ -31,27 +38,27 @@ export const Carousel = () => {
     width: "600px", // Adjust the width as needed
     height: "400px", // Adjust the height as needed
     borderRadius: "20px",
+    zIndex:"9999"
   };
   const leftSideImg = {
     backgroundImage: `url(${
-      slides[currIndex === 0 ? slides.length - 1 : currIndex - 1]
+      slides[leftImgIndex === 0 ? slides.length - 1 : leftImgIndex - 1]
     })`,
     backgroundSize: "cover", // Optional: Adjust background size
     width: "450px", // Adjust the width as needed
     height: "300px",
-    borderRadius: "20px",
-    position: "absolute", // Position the left image absolutely
-    left: 0, // Position it at the left edge
-    clipPath: "polygon(0 0, 50% 0, 50% 100%, 0 100%)",
+    borderRadius: "20px", // Position the left image absolutely
+    marginRight:"-250px"
   };
   const rightSideImg = {
     backgroundImage: `url(${
-      slides[currIndex === slides.length - 1 ? 0 : currIndex + 1]
+      slides[rightImgIndex === slides.length - 1 ? 0 : rightImgIndex + 1]
     })`,
     backgroundSize: "cover", // Optional: Adjust background size
     width: "450px", // Adjust the width as needed
     height: "300px", // Adjust the height as needed
     borderRadius: "20px",
+    marginLeft:"-250px"
   };
 
   const rightArrowStyles = {
@@ -96,7 +103,7 @@ export const Carousel = () => {
 
       <div></div>
       <div style={buttonContainer}>
-        <div onClick={() => prevSlide()} style={leftArrowStyles}>
+        <div onClick={(index) => prevSlide(index)} style={leftArrowStyles}>
           ❰
         </div>
         <div style={dotsContainerStyles}>
@@ -111,7 +118,7 @@ export const Carousel = () => {
             </div>
           ))}
         </div>
-        <div onClick={() => nextSlide()} style={rightArrowStyles}>
+        <div onClick={(index) => nextSlide(index)} style={rightArrowStyles}>
           ❱
         </div>
       </div>
