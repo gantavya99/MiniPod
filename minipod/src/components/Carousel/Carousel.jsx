@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import "./Carousel.css"; // Adjust the import path for your CSS
 import img1 from "../../assets/Car1.jpg";
 import img2 from "../../assets/Car2.jpg";
@@ -52,6 +53,20 @@ export const Carousel = () => {
   const goToSlide = (slideIndex) => {
     setCurrIndex(slideIndex);
   };
+  const slideVariants = {
+    initial: {
+      opacity: 0,
+      x: -100,
+    },
+    animate: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
+
   const sliderContainer = {
     display: "flex",
     alignItems: "center",
@@ -133,13 +148,17 @@ export const Carousel = () => {
   return (
     <div className="container">
       <h1>Carousel</h1>
-      <div style={sliderContainer}>
-        <div style={leftSideImg1}></div>
-        <div style={leftSideImg}></div>
-        <div style={mainImg}></div>
-        <div style={rightSideImg}></div>
-        <div style={rightSideImg1}></div>
-      </div>
+      
+        <div style={sliderContainer}>
+          
+          <div style={leftSideImg1}></div>
+          <div style={leftSideImg}></div>
+          <div style={mainImg}></div>
+          <div style={rightSideImg}></div>
+          <div style={rightSideImg1}></div>
+          
+        </div>
+      
 
       <div></div>
       <div style={buttonContainer}>

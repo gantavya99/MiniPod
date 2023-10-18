@@ -12,7 +12,7 @@ body{
 .navbar {
   background: #2f302c;
   padding: 10px 0;
-  
+  z-index: 999999;
 }
 
 /* Style the logo image */
@@ -67,6 +67,7 @@ ul li ul.dropdown {
 ul li:hover ul.dropdown {
   display: flex;
   flex-direction: column;
+  z-index: 99999999;
 }
 .img-nav{
   float: left;
